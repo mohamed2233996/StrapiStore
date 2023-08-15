@@ -1,0 +1,6 @@
+{
+    "git.alwaysSignOff": false,
+    "github.branchProtection": true,
+    "github.gitAuthentication": true,
+    "git.enableStatusBarSync": true
+}
