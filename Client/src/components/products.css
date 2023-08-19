@@ -42,6 +42,8 @@
     position: absolute;
     bottom:-100px ;
     margin: 0;
+    color: rgb(255, 255, 255);
+    padding: 2px;
     width: -webkit-fill-available;
     background: rgb(0 0 0 / 80%);
     transition: all .3s ease-in-out;
@@ -57,5 +59,11 @@
     right: 0px;
     padding: 5px 10px;
     background: #f3f306;
+}
+
+.product-btn{
+    background: black;
+    color: white;
+    font-size: 15px;
 }
 

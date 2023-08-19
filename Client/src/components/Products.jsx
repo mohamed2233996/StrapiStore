@@ -1,10 +1,16 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import useFetch from '../Hooks/useFatch';
 import './products.css'
+import StoreContext from '../Hooks/StoreContext';
+import { addtoCart } from '../redux/cardReducer'
+import { useDispatch } from 'react-redux';
 
 const Products = () => {
     const [products, setproducts] = useState([]);
-    const {data, loading, error} = useFetch("/products?populate=*");
+    const {valueSend} = useContext(StoreContext);
+    const {data, loading, error} = useFetch(valueSend);
+    const dispatch =  useDispatch()
+
     
     useEffect(()=>{
         data && setproducts(data);
@@ -22,6 +28,15 @@ const Products = () => {
                         <p className='product-prise'>{product.attributes.price}$</p>
                     </div>
                     <h1>{product.attributes.title}</h1>
+                    < button className='product-btn'
+                        onClick={()=>dispatch(addtoCart({
+                            id: product.id,
+                            title: product.attributes.title,
+                            price: product.attributes.price,
+                            desc: product.attributes.descraption,
+                            image: product.attributes.imge.data.attributes.url
+                        }))}
+                    >Add to cart</button>
                 </div>
             ))} 
         </div>

@@ -9,7 +9,6 @@ const Categores = () => {
     
     useEffect(()=>{
         data && setcategores(data);
-        console.log(categores)
     },[data]);
 
     return (

@@ -1,15 +1,24 @@
 import { useState,useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Products from './components/Products'
 import Categories from './components/categories'
+import Cart from './components/Cart'
+import StoreContext from './Hooks/StoreContext'
 function App() {
+
+  const [valueSend , setValueSend] = useState("/products?populate=*")
+  const [selectedCategore, setselectedCategore] = useState([])
 
   return (
     <>
-      <Categories />
-      <Products />
+      <Cart />
+      <StoreContext.Provider value={{
+        valueSend, setValueSend,
+        selectedCategore, setselectedCategore
+        }}>
+        <Categories />
+        <Products /> 
+      </StoreContext.Provider>
     </>
   )
 }
